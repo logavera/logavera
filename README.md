@@ -138,10 +138,7 @@ Contributions are welcome!
 - Storage adapters  
 - Developer tooling  
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
 ---
 
 ## 📄 License
-
-[MIT License](LICENSE)
+[LICENSE](LICENSE)
