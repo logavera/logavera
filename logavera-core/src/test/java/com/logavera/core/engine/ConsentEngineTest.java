@@ -138,6 +138,7 @@ class ConsentEngineTest {
         when(document1.getId()).thenReturn("1");
         when(documentVersion1.getDocumentId()).thenReturn("1");
         when(documentVersion1.getId()).thenReturn("1");
+        when(documentVersion1.getEffectiveSince()).thenReturn(Instant.now().minus(1, ChronoUnit.DAYS));
         when(consentRecord1.getDocumentVersionId()).thenReturn("1");
         when(consentRecord1.getCreatedAt()).thenReturn(Instant.now().minus(1, ChronoUnit.MINUTES));
 
