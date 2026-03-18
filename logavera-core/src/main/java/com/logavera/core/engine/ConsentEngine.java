@@ -8,13 +8,31 @@ import jakarta.annotation.Nonnull;
 import java.time.Instant;
 import java.util.List;
 
+
+/**
+ * The ConsentEngine class is responsible for evaluating consent information
+ * to determine which documents are consented by analyzing consent records
+ * and document hierarchies.
+ * This class acts as the core logic for handling
+ * consent evaluation operations.
+ */
 public class ConsentEngine {
 
-    private final DocumentTree documentTree = new DocumentTree();
-    private final ContextBuilder contextBuilder = new ContextBuilder(documentTree);
-    private final ConsentEvaluator consentEvaluator = new ConsentEvaluator(contextBuilder);
+    private final ConsentEvaluator consentEvaluator;
 
     /**
+     * Default constructor for ConsentEngine.
+     * Initializes documentTree, contextBuilder, and consentEvaluator instances.
+     */
+    public ConsentEngine() {
+        final DocumentTree documentTree = new DocumentTree();
+        final ContextBuilder contextBuilder = new ContextBuilder(documentTree);
+        consentEvaluator = new ConsentEvaluator(contextBuilder);
+    }
+
+    /**
+     * Evaluates provided sources to compute the list of consented documents
+     *
      * @param <T>              documentId type
      * @param documents        List of documents
      * @param documentVersions List of document versions

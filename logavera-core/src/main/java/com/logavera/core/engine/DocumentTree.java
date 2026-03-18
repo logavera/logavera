@@ -9,9 +9,28 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * A utility class that provides methods for constructing and navigating a tree structure of documents.
+ * <p>
+ * The class includes functionalities to:
+ * - Build a document tree from a list of documents.
+ * - Retrieve a flattened list of all nodes from any given root node.
+ * - Build a full tree or a tree starting from a specific root document.
+ * <p>
+ * The class relies on the {@link Document} and {@link DocumentNode} classes to handle individual nodes and
+ * document relationships.
+ */
 public class DocumentTree {
 
     /**
+    * Default constructor.
+     */
+    public DocumentTree() {
+        
+    }
+    
+    /**
+     * Builds a tree structure from a list of documents.
      * @param <T>          documentId type
      * @param documents    List of documents
      * @param rootDocument If provided, documents above the hierarchy will be ignored
@@ -27,6 +46,7 @@ public class DocumentTree {
     }
 
     /**
+     * Retrieves a list of all nodes in the tree starting from the provided root node.
      * @param <T>      documentId type
      * @param rootNode Root node
      * @return Flattened list of the root and its descendants

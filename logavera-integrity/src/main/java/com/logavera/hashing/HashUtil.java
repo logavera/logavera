@@ -5,9 +5,9 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
-public class HashUtil {
+class HashUtil {
 
-    public static String signedHash(String payload, String secretKey) {
+     static String signedHash(String payload, String secretKey) {
         try {
             Mac mac = Mac.getInstance("HmacSHA256");
             SecretKeySpec key = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
