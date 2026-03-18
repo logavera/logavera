@@ -1,145 +1,147 @@
-# Logavera Core
+# Logavera Core ![GitHub](https://img.shields.io/github/license/logavera/logavera-core) ![GitHub issues](https://img.shields.io/github/issues/logavera/logavera-core)
 
-**Tamper-proof agreement and consent infrastructure.**
+**Tamper-proof agreement and consent infrastructure**
 
 Logavera Core is an open-source library for building **verifiable agreement and consent systems**.  
-It provides immutable document versioning, cryptographic integrity checks, and consent recording primitives.
+It provides **immutable document versioning**, **cryptographic integrity checks**, and primitives for recording consent.
 
-The library is designed to be embedded into applications that require **auditable proof of user agreement**.
-
-Typical use cases include:
-
-- Terms of Service acceptance
-- Privacy policy consent
-- parental consent
-- delegated authorization
-- legal agreements
-- regulatory compliance flows
-
-Logavera ensures that every consent can be **cryptographically tied to a specific document version**.
+Designed for applications that require **auditable proof of user agreement**, Logavera ensures every consent is **cryptographically tied to a specific document version**.
 
 ---
 
-# Why?
+## 📑 Table of Contents
 
-Logavera provides strong guarantees:
-
-- immutable document versions
-- cryptographic document hashing
-- consent bound to document version
-- verifiable proof generation
-- audit-ready metadata
-
-This allows systems to demonstrate **what exactly was accepted and when**.
+- [Features](#-features)  
+- [Core Concepts](#-core-concepts)  
+  - [Documents](#documents)  
+  - [Versions](#versions)  
+  - [Consent](#consent)  
+  - [Access Log](#access-log)  
+  - [Engine](#engine)  
+- [Sandbox](#-sandbox)  
+- [Security Model](#-security-model)  
+- [Contributing](#-contributing)  
+- [License](#-license)  
 
 ---
 
-# Core Concepts
+## 🚀 Features
 
-## Documents
+- Immutable document versions  
+- Cryptographic document hashing  
+- Consent bound to document version  
+- Verifiable proof generation  
+- Audit-ready metadata  
+
+**Use cases:**  
+
+- Acceptance of Terms of Service  
+- Privacy policy consent  
+- Parental consent  
+- Delegated authorization  
+- Legal agreements  
+- Regulatory compliance flows  
+
+---
+
+## 🧩 Core Concepts
+
+### Documents
 
 A **Document** represents a logical agreement.
 
-Examples:
+Examples:  
 
-- Privacy Policy
-- Terms of Service
-- Data Processing Agreement
+- Privacy Policy  
+- Terms of Service  
+- Data Processing Agreement  
 
-Document may contain multiple child Documents, and multiple Document Versions.
+Documents can contain multiple child documents and multiple versions.
 
-## Versions
+### Versions
 
 A **Version** is an immutable snapshot of a document.
 
-Each version includes a content hash (SHA-256), a hash of the previous Document version—all together signed by a secret
-key.
-This prevents injection or modification of content and other properties, which could otherwise be used to manipulate the
-Engine output.
+Each version contains:  
 
-## Consent
+- Content hash (SHA-256)  
+- Hash of the previous version  
 
-A **Consent** is an immutable representation of a user accepting a specific document version.
+All elements are signed by a secret key, preventing tampering or manipulation.
 
-Each Consent includes a signed Document Version hash (SHA-256), a hash of the previous Consent, metadata—all together
-signed by a secret key.
-This prevents injection or modification of content and other properties, which could otherwise be used to manipulate the
-Engine output.
+### Consent
 
-Example metadata:
+A **Consent** is an immutable record of a user accepting a specific document version.
 
-- IP address
-- user agent
-- UI presentation context
+Each consent contains:  
 
-Consent record is a proof that a certain Document Version was consented/rejected at a certain point in time.
+- Signed document version hash (SHA-256)  
+- Hash of the previous consent  
+- Metadata (IP address, user agent, UI context)  
 
-## Access Log
+Signed by a secret key, it proves **exactly when and what was accepted or rejected**.
 
-An **Access Log** is an immutable representation of a user fetching a specific document version.
+### Access Log
 
-Each Access Log includes a signed Document Version hash (SHA-256), a hash of the previous Access Log, metadata—all
-together signed by a secret key.
-This prevents injection or modification of content and other properties, which could otherwise be used to manipulate the
-Engine output.
+An **Access Log** records a user fetching a specific document version.
 
-Example metadata:
+Each access log contains:  
 
-- IP address
-- user agent
-- UI presentation context
+- Signed document version hash (SHA-256)  
+- Hash of the previous access log  
+- Metadata (IP address, user agent, UI context)  
 
-Access Log is a proof that a certain Document Version was fetched before giving a consent-to prove that the
-consentee was presented with the correct version of the document at the moment of giving a consent.
+This proves the user **viewed the document before giving consent**, ensuring transparency.
 
-## Engine
+### Engine
 
-Engine is the main entry point. It performs evaluation of the provided resources and outputs a list of fully consented
-documents.
-Fully consented document means:
-- all its document versions have consent
-- all its children documents have consent
+The **Engine** evaluates resources and outputs a list of **fully consented documents**, meaning:  
 
-# Sandbox
-You can try it here: www.logavera.com/sandbox
+- All document versions have recorded consent  
+- All child documents have recorded consent  
 
-## Components:
+---
 
-```logavera-core``` core domain model and consent evaluation engine
+## 🧪 Sandbox
 
-```logavera-integrity``` hashing mechanisms and domain model extension
+Try it live: [www.logavera.com/sandbox](https://www.logavera.com/sandbox)
 
-```logavera-spring-boot-starter``` Spring Boot integration
+### Components
 
-A managed Logavera service is available at:
+- `logavera-core` – Core domain model & consent evaluation engine  
+- `logavera-integrity` – Hashing mechanisms & domain model extensions  
+- `logavera-spring-boot-starter` – Spring Boot integration  
 
-https://logavera.com
+Managed service available at: [https://logavera.com](https://logavera.com)
 
-# Security Model
+---
 
-### Core principles
+## 🔒 Security Model
 
-- immutable document versions and consents
+### Core Principles
 
-- content hashing
+- Immutable document versions and consents  
+- Content hashing  
+- Signed proofs  
+- Transparent verification  
 
-- signed proofs
+---
 
-- transparent verification
+## 🤝 Contributing
 
-# Contributing
+Contributions are welcome!
 
-Contributions are welcome.
+**Areas for contribution:**  
 
-### Typical contribution areas
+- Integrations  
+- Additional proof formats  
+- Storage adapters  
+- Developer tooling  
 
-- integrations
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-- additional proof formats
+---
 
-- storage adapters
+## 📄 License
 
-- developer tooling
-
-# License
-[LICENSE](LICENSE)
+[MIT License](LICENSE)
