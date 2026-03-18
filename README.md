@@ -1,8 +1,8 @@
-# Logavera Core ![GitHub](https://img.shields.io/github/license/logavera/logavera-core) ![GitHub issues](https://img.shields.io/github/issues/logavera/logavera-core)
+# Logavera
 
 **Tamper-proof agreement and consent infrastructure**
 
-Logavera Core is an open-source library for building **verifiable agreement and consent systems**.  
+Logavera is a library for building **verifiable agreement and consent systems**.  
 It provides **immutable document versioning**, **cryptographic integrity checks**, and primitives for recording consent.
 
 Designed for applications that require **auditable proof of user agreement**, Logavera ensures every consent is **cryptographically tied to a specific document version**.
